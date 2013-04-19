@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+
+  <body>
+
+    <a id="login-link" href="#" onclick="hire_doer.user.show_login_dialog()" class="top-right-links pull-right">Login</a>
+    
+    <div id="logged-links">
+      <a href="#" onclick="hire_doer.user.try_logout()" class="top-right-links pull-right">Logout</a>
+      <a id="my-tasks" href="#" onclick="" class="top-right-links pull-right">My tasks</a>
+    </div>
+    
+    <div id="page-header-inner" class="span12" style="background-color:#0080be; padding-left:20px; padding-right:20px;">
+      <a href="#" onclick="hire_doer.main.redraw_page()"><h2 class="pull-left" style="color:white;">Hire Doer!</h2></a>
+      <div id="header-links">	
+      </div>	
+    </div>
+
+    <div id="grey-content-inner" class="jumbotron" style="background-color:#eee">
+      <h1>Create task!</h1>
+      <p class="lead"><em>Hire Doer!</em> allows you hiring doers for your tasks.</p>
+      <a onclick="hire_doer.main.show_create_task();" class="btn btn-large btn-success" href="#">Create task</a>
+    </div>
+    
+
+
+    
+    <div id="modal-dialog">
+      <div id="content" class="modal">
+	<div class="modal-header">
+	  <button onclick="helpers.components.hide_dialog();" type="button" class="close" data-dismiss="modal">x</button>
+	  <h3 id="header"></h3>
+	</div>
+	<div id="body" class="modal-body">
+	</div>
+	<div id="footer" class="modal-footer">
+	</div>
+      </div>
+    </div>
+
+    <div id="ok-cancel">
+      <button id="ok-btn" class="btn">OK</button>
+      <button class="btn" onclick="helpers.components.hide_dialog();">Cancel</button>
+    </div>
+
+
+    <div id="task-items-wrapper" style="padding:10px;">
+      <h2>Latest tasks</h2>
+    </div>
+
+    <div id="my-task-items-wrapper" style="padding:10px;">
+      <h2>My tasks</h2>
+    </div>
+
+    
+    <div id="task-item" style="padding-left:60px;">
+      <div class="row">
+	<div class="span10">
+	  <div class="row">
+	    <div class="span6">
+	      <a id="header-link" href="#"><h3 id="header">Task item</h3></a>
+	    </div>
+	  </div>
+	  <div class="row">
+	    <div class="span6">
+	      <p id="content"></p>
+	    </div>
+	    <div class="span4">
+	      <div class="row">
+		<div class="span2">
+		  <label for="date">Date:</label>
+		</div>
+		<div class="span1">
+		  <p id="date"></p>
+		</div>
+	      </div>
+	      <div class="row">
+		<div class="span2">  
+		  <label for="phone">Phone:</label>
+		</div>
+		<div class="span1">
+		  <p id="phone"></p>
+		</div>
+	      </div>
+	    </div>	    
+	  </div>
+	</div>
+      </div>
+    </div>
+
+
+    <div id="task-details" style="padding-left:80px;">
+      <div class="row">
+	<div class="span10">
+	  <div class="row">
+	    <div class="span6">
+	      <h3 id="header">Task details</h3>
+	    </div>
+	  </div>
+	  <div class="row">
+	    <div class="span6">
+	      <p id="content"></p>
+	    </div>
+	    <div class="span4">
+	      <div class="row">
+		<div class="span2">
+		  <label for="date">Date:</label>
+		</div>
+		<div class="span1">
+		  <p id="date"></p>
+		</div>
+	      </div>
+	      <div class="row">
+		<div class="span2">  
+		  <label for="phone">Phone:</label>
+		</div>
+		<div class="span1">
+		  <p id="phone"></p>
+		</div>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="row">
+	    <div class="span3">
+	      <a onclick="hire_doer.main.redraw_page();" class="btn" href="#">Close</a>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+
+    <div id="my-task-details" style="padding-left:80px;">
+      <div class="row">
+	<div class="span10">
+	  <div class="row">
+	    <div class="span6">
+	      <h3 id="header">My task details</h3>
+	    </div>
+	  </div>
+	  <div class="row">
+	    <div class="span6">
+	      <p id="content"></p>
+	    </div>
+	    <div class="span4">
+	      <div class="row">
+		<div class="span2">
+		  <label for="date">Date:</label>
+		</div>
+		<div class="span1">
+		  <p id="date"></p>
+		</div>
+	      </div>
+	      <div class="row">
+		<div class="span2">  
+		  <label for="phone">Phone:</label>
+		</div>
+		<div class="span1">
+		  <p id="phone"></p>
+		</div>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="row">
+	    <div class="span3">
+	      <a id="edit-task" class="btn" href="#">Edit</a>
+	      <a id="delete-task" class="btn" href="#">Delete</a>
+	      <a onclick="hire_doer.main.redraw_page('my-task-list');" class="btn" href="#">Close</a>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    
+    <div id="create-task">
+      <h2>Create task</h2><br/>
+
+      <label for="header">Header:</label>
+      <input type="text" id="header"></input><br/>
+
+      <label for="date">Date:</label>
+      <input type="text" id="date"></input><br/>
+      
+      <label for="phone">Phone:</label>
+      <input type="text" id="phone"></input><br/>
+      
+      <label for="content">Content:</label>
+      <textarea id="content"></textarea><br/>
+      <a onclick="hire_doer.main.try_create_task();" class="btn" href="#">Create</a>
+      <a onclick="hire_doer.main.redraw_page();" class="btn" href="#">Close</a>
+    </div>
+
+    <div id="update-task">
+      <h2>Edit task</h2><br/>
+
+      <label for="header">Header:</label>
+      <input type="text" id="header"></input><br/>
+
+      <label for="date">Date:</label>
+      <input type="text" id="date"></input><br/>
+      
+      <label for="phone">Phone:</label>
+      <input type="text" id="phone"></input><br/>
+      
+      <label for="content">Content:</label>
+      <textarea id="content"></textarea><br/>
+      <a id="edit-task" class="btn" href="#">Update</a>
+      <a id="close-task" class="btn" href="#">Close</a>
+    </div>
+
+    <div id="login-dlg">
+      <label for="login">Login:</label>
+      <input type="text" id="login" onKeyUp="loginKeyPressed(event)"></input><br/>
+      
+      <label for="password">Password:</label>
+      <input type="password" id="password" onKeyUp="loginKeyPressed(event)"></input><br/>
+    </div>
+
+  </body>
+</html>
