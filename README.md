@@ -1,19 +1,32 @@
-# hire-doer
+# ClojureScript Example Application
 
-FIXME
+Позволяет создавать, редактировать, просматривать и удалять задания. Реализована аутентификация.
 
-## Prerequisites
 
-You will need [Leiningen][1] 1.7.0 or above installed.
+## Предварительные требования
 
-[1]: https://github.com/technomancy/leiningen
+* Leiningent 2.0 или выше (http://leiningen.org)
+* MySQL
+* PhantomJS для тестирования (http://phantomjs.org)
 
-## Running
+## Запуск
 
-To start a web server for the application, run:
+Прежде -- настройте БД. Создайте базу hiredoer с пользователем hiredoer и паролем hiredoer.
+
+Импортируйте в базу таблицы из дампа SQL/database.sql.
+
+Cкомпилируйте приложение.
+
+    lein cljsbuild once
+
+Запустите его: 
 
     lein ring server
 
+Откройте приложение в браузере: http://localhost:3000/html/main.html
+
+В БД настроены два пользователя: user/user и root/root.
+
 ## License
 
-Copyright © 2013 FIXME
+Copyright © 2013 BSD
