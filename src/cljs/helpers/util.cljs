@@ -19,7 +19,7 @@
 (defn ^:export get-data [url func]
   (.send goog.net.XhrIo
          url
-         #(func (reader/read-string (.getResponseText (.-target %))))
+         #(func (.getResponseText (.-target %)))
          "GET"))
 
 (defn ^:export post-data
@@ -61,4 +61,11 @@
 (defn hide-element [id]
   (em/at js/document
          [id] (em/set-attr :style "display:none;")))
+
+(defn make-js-map
+  "makes a javascript map from a clojure one"
+  [cljmap]
+  (let [out (js-obj)]
+    (doall (map #(aset out (name (first %)) (second %)) cljmap))
+    out))
 
