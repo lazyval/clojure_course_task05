@@ -6,30 +6,26 @@
   (:require-macros [enfocus.macros :as em])
   (:use [jayq.core :only [$ css inner]]))
 
-(em/defsnippet commit "html/fragments.html" [:#commit]
-    [{sha :sha message :message commit :commit}]
-    [:#header] (em/content sha)
-    [:.label]   (em/content commit)
-    [:#content](em/content message))
+(em/defsnippet commit "html/fragments.html" [:.commit]
+    [{sha "sha" commit "commit" message "message"}]
+
+    [:.sha]      (em/content (str "in: " sha))
+    [:.date]     (em/content (-> commit "author" "date"))
+    [:.message]  (em/content ("message" commit)))
 
 
 (defn render-commits [response]
-    (let [_ (.log js/console "making request")
-          json (js->clj response :keywordize-keys true)
-          commits (map commit json)
-          _ (.log js/console (:sha json))]
+    (let [json (js->clj (JSON/parse response) true)
+          commits (map commit json)]
           (em/at js/document
-            ["#repo"] (em/content commit nil)
-                 )))
+            ["#repo"] (em/content commits))))
 
 (defn ^:export try-update-commits [userrepo]
-    (let [;userrepo (.val ($ "#user-and-repo"))
-          userrepo "clojure/clojure"
+    (let [userrepo (.val ($ "#user-and-repo"))
           url (str "https://api.github.com/repos/" userrepo "/commits")]
     (do
       (.empty ($ "#repo"))
-      ;(util/get-data url render-commits))))
-      (render-commits "[{sha: 'some sha', message: 'some message', commit: []}]"))))
+      (util/get-data url render-commits))))
 
 ;(defn ^:export open-repo []
 ;   (let [input (-> (get-input)

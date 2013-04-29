@@ -25,8 +25,8 @@
       :output-to "resources/public/js/main.js",
       :warnings true,
       :externs ["externs/jquery-1.9.js"],
-;      :optimizations :advanced,
-      :optimizations :whitespace,
+      :optimizations :advanced,
+;      :optimizations :whitespace,
       :print-input-delimiter false}}
     ],
    }
